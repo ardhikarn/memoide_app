@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use("/posts", postRoutes); // harus dibawah cors
 const CONNECTION_URL =
-  "mongodb+srv://memoide:Indonesia3737@cluster0.pymgz.mongodb.net/<dbname>?retryWrites=true&w=majority";
+  "mongodb+srv://memoide:Indonesia3737@cluster0.pymgz.mongodb.net/memoide";
 const PORT = process.env.PORT || 5000;
 
 mongoose
