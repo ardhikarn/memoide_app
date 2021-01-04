@@ -1,4 +1,5 @@
 import express from "express";
+const router = express.Router();
 import {
   getPosts,
   createPost,
@@ -6,8 +7,6 @@ import {
   deletePost,
   likePost,
 } from "../controllers/posts.js";
-
-const router = express.Router();
 
 router.get("/", getPosts);
 router.post("/", createPost);
