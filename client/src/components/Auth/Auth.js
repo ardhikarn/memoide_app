@@ -16,16 +16,37 @@ import Input from "./Input";
 import Icon from "./Icon.js";
 import useStyles from "./styles";
 
+import { signin, signup } from "../../actions/auth";
+
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
-
   const classes = useStyles();
-  const handleSubmit = () => {};
 
-  const handleChange = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (isSignup) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -120,7 +141,7 @@ const Auth = () => {
                 startIcon={<Icon />}
                 variant="contained"
               >
-                Google Sign In
+                {isSignup ? "Google Sign Up" : "Google Sign In"}
               </Button>
             )}
             onSuccess={googleSuccess}
