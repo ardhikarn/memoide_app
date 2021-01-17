@@ -4,7 +4,9 @@ import * as api from "../api/index.js";
 // action creators
 export const signin = (formData, history) => async (dispatch) => {
   try {
-    // Login user
+    const { data } = await api.signin(formData);
+
+    dispatch({ type: AUTH, data });
 
     history.push("/");
   } catch (error) {
@@ -14,7 +16,9 @@ export const signin = (formData, history) => async (dispatch) => {
 
 export const signup = (formData, history) => async (dispatch) => {
   try {
-    // signup user
+    const { data } = await api.signup(formData);
+
+    dispatch({ type: AUTH, data });
 
     history.push("/");
   } catch (error) {
