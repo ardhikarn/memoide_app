@@ -7,7 +7,7 @@ import {
   deletePost,
   likePost,
 } from "../controllers/posts.js";
-import auth from "../middlewares/auth";
+import auth from "../middlewares/auth.js";
 
 router.get("/", getPosts);
 router.post("/", auth, createPost);
